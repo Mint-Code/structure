@@ -25,6 +25,15 @@ public class testStructureArray {
     }
 
     @Test
+    public void testCreateArray() {
+        Integer[] list = {1, 2, 3, 4, 5};
+        array = new StructureArray<Integer>(list);
+        Assert.assertEquals("[1, 2, 3, 4, 5]", array.toString());
+        array = new StructureArray<Integer>(1, 2, 3, 4, 5);
+        Assert.assertEquals("[1, 2, 3, 4, 5]", array.toString());
+    }
+
+    @Test
     public void testGetMetadata() {
         Integer[] list = {1, 2, 3, 4, 5};
         Assert.assertEquals(list[0], array.toArray()[0]);
@@ -41,6 +50,10 @@ public class testStructureArray {
     public void testAddElement() {
         array.add(0);
         Assert.assertEquals("[1, 2, 3, 4, 5, 0]", array.toString());
+        Assert.assertEquals(0, (int) (array.get(5)));
+        array.insert(0, 3);
+        Assert.assertEquals("[1, 2, 3, 0, 4, 5, 0]", array.toString());
+        Assert.assertEquals(0, (int) (array.get(3)));
     }
 
     @Test
